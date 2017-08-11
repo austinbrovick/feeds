@@ -9,3 +9,16 @@
 		<input type="submit" value="Submit" />
 	</form>
 </div>
+
+
+<div>
+	<ul>
+		{% for feed in feeds %}
+			<ul>
+				<form action='feed/{{feed.name}}/'>
+					 <input type='submit' value='{{feed.name}}'>
+				</form>
+			</ul>
+		{% endfor %}
+	</ul>
+</div>

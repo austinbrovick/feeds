@@ -5,21 +5,13 @@ from .forms import FeedForm
 from .models import Feed
 
 
-
 def index(request):
     form = FeedForm()
-    return render(request, 'feeds/index.html', {'form': form})
+    feeds = Feed.objects.all()
+    return render(request, 'feeds/index.html', {'form': form, 'feeds': feeds})
 
 
 def create_feed(request):
-    # form = FeedForm(request.POST)
-    # if form.is_valid():
-        # try:
-        # feed = Feed.objects.get(name=form.cleaned_data['name']
-        # except Feed.DoesNotExist:
-        #     print("yup")
-        #     feed = Feed.objects.create(name=form.cleaned_data['name'])
-        #     feed.save()
     form = FeedForm(request.POST)
     if form.is_valid():
         try:
